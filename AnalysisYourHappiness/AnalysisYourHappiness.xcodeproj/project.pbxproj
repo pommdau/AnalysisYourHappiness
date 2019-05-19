@@ -13,6 +13,7 @@
 		2ABE8BAD228FD037004053E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ABE8BAB228FD037004053E9 /* LaunchScreen.storyboard */; };
 		2ABE8BB5228FD25F004053E9 /* HappinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */; };
 		2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */; };
+		2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2ABE8BAE228FD037004053E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessListViewController.swift; sourceTree = "<group>"; };
 		2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessItem.swift; sourceTree = "<group>"; };
+		2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2ABE8BA2228FD033004053E9 /* AppDelegate.swift */,
 				2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */,
 				2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */,
+				2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */,
 				2ABE8BA6228FD033004053E9 /* Main.storyboard */,
 				2ABE8BA9228FD037004053E9 /* Assets.xcassets */,
 				2ABE8BAB228FD037004053E9 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ABE8BB5228FD25F004053E9 /* HappinessListViewController.swift in Sources */,
+				2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */,
 				2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */,
 				2ABE8BA3228FD033004053E9 /* AppDelegate.swift in Sources */,
 			);

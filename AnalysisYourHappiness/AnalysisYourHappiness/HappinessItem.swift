@@ -10,6 +10,6 @@ import Foundation
 import UserNotifications
 
 class HappinessItem: NSObject, Codable {
-    var name = "happiness item name"
+    var name = "item name"
     var rating = 3.0
 }
