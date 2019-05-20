@@ -14,6 +14,7 @@
 		2ABE8BB5228FD25F004053E9 /* HappinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */; };
 		2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */; };
 		2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */; };
+		2ABE8BBB22918E14004053E9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessListViewController.swift; sourceTree = "<group>"; };
 		2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessItem.swift; sourceTree = "<group>"; };
 		2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessList.swift; sourceTree = "<group>"; };
+		2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				2ABE8BA2228FD033004053E9 /* AppDelegate.swift */,
 				2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */,
+				2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */,
 				2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */,
 				2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */,
 				2ABE8BA6228FD033004053E9 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABE8BBB22918E14004053E9 /* ItemDetailViewController.swift in Sources */,
 				2ABE8BB5228FD25F004053E9 /* HappinessListViewController.swift in Sources */,
 				2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */,
 				2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */,
