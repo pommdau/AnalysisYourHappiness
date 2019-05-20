@@ -14,7 +14,7 @@ protocol ItemDetailViewControllerDelegate: class {
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: HappinessItem)
 }
 
-class ItemDetailViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var doneBarButton: UIBarButtonItem!  // 編集完了ボタン
     @IBOutlet weak var nameTextField: UITextField!      // item名の入力欄
@@ -24,21 +24,25 @@ class ItemDetailViewController: UITableViewController {
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: HappinessItem?
+    var isNameTextFieldEmpty  = true
+    var isPriceTextFieldEmpty = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let itemToEdit = itemToEdit {    // 編集モードの場合
-            title = "編集画面"
+            title = "項目の編集"
             nameTextField.text      = itemToEdit.name
+            isNameTextFieldEmpty  = false
+            isPriceTextFieldEmpty = false
             doneBarButton.isEnabled = true
             ratingSlider.value      = itemToEdit.rating
             self.sliderValueChanged(self)
-            priceTextField.text      = String(itemToEdit.price)
+            priceTextField.text     = String(itemToEdit.price)
+        } else {
+            title = "項目の追加"
         }
     }
-
-    // MARK: - Table view data source
     
     // MARK:- Table View Delegates
     override func tableView(_ tableView: UITableView,
@@ -70,6 +74,33 @@ class ItemDetailViewController: UITableViewController {
         var rating = ratingSlider.value
         rating = floor(rating * 10.0) / 10.0    // 0.1単位とする
         ratingSlider.value = rating
-        ratingLabel.text = "幸せ度：\(rating)"
+        ratingLabel.text = "\(rating)"
+    }
+    
+    // MARK:- Text Field Delegates
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        let oldText = textField.text!
+        let stringRange = Range(range, in:oldText)!
+        let newText = oldText.replacingCharacters(in: stringRange,
+                                                  with: string)
+        if (textField === nameTextField) {
+            isNameTextFieldEmpty = newText.isEmpty
+        } else if (textField === priceTextField) {
+            isPriceTextFieldEmpty = newText.isEmpty
+        }
+        doneBarButton.isEnabled = !isNameTextFieldEmpty && !isPriceTextFieldEmpty
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if (textField === nameTextField) {
+            isNameTextFieldEmpty = true
+        } else if (textField === priceTextField) {
+            isPriceTextFieldEmpty = true
+        }
+        doneBarButton.isEnabled = false
+        return true
     }
 }
