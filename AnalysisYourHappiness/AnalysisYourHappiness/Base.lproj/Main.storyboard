@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Happiness Item-->
+        <!--行動リスト-->
         <scene sceneID="U3F-NU-RqG">
             <objects>
                 <tableViewController id="S5t-1g-MNE" customClass="HappinessListViewController" customModule="AnalysisYourHappiness" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="HappinessItem" id="guP-fZ-Xbq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HappinessItem" id="guP-fZ-Xbq">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="guP-fZ-Xbq" id="Lr8-rH-Rxp">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(HappinessItemName)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90A-oW-e8N">
@@ -35,7 +35,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="s8W-8y-CtW" kind="show" identifier="EditItem" trigger="accessoryAction" id="yuy-ua-OS9"/>
+                                    <segue destination="s8W-8y-CtW" kind="show" identifier="EditItem" id="g8R-aQ-skb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -44,7 +44,7 @@
                             <outlet property="delegate" destination="S5t-1g-MNE" id="CqQ-Yk-FGN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Happiness Item" id="abA-0L-qyT">
+                    <navigationItem key="navigationItem" title="行動リスト" id="abA-0L-qyT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lzp-iw-fzT">
                             <connections>
                                 <segue destination="s8W-8y-CtW" kind="show" identifier="AddItem" id="DWw-hy-o1m"/>
@@ -74,11 +74,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="項目名を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
-                                                    <rect key="frame" x="20" y="7" width="374" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="項目名" placeholder="項目名を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
+                                                    <rect key="frame" x="20" y="11" width="212" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -91,13 +91,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-YG-8zS">
-                                                    <rect key="frame" x="125" y="7" width="269" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="sliderValueChanged:" destination="s8W-8y-CtW" eventType="valueChanged" id="ao3-3d-ryE"/>
-                                                    </connections>
-                                                </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="幸せ度：3.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-ke-98H">
                                                     <rect key="frame" x="20" y="12" width="99" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,6 +98,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-YG-8zS">
+                                                    <rect key="frame" x="125" y="7" width="269" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="s8W-8y-CtW" eventType="valueChanged" id="o7D-8u-O6s"/>
+                                                    </connections>
+                                                </slider>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -115,11 +115,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="かかる費用を入力してください" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
-                                                    <rect key="frame" x="128" y="7" width="237" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" placeholder="かかる費用を入力してください" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
+                                                    <rect key="frame" x="127" y="10" width="247" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="費用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlu-58-dp9">
@@ -160,11 +160,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="costTextField" destination="Neq-gq-FXZ" id="fBk-yA-SkC"/>
                         <outlet property="doneBarButton" destination="aHP-pW-yej" id="lLu-Y7-FNK"/>
                         <outlet property="nameTextField" destination="kHe-WZ-Kjj" id="oej-Sq-oGm"/>
+                        <outlet property="priceTextField" destination="Neq-gq-FXZ" id="J1g-Zx-agS"/>
                         <outlet property="ratingLabel" destination="2sa-ke-98H" id="OYE-vK-VB7"/>
-                        <outlet property="ratingSlider" destination="8wX-YG-8zS" id="4gX-Fl-lrG"/>
+                        <outlet property="ratingSlider" destination="8wX-YG-8zS" id="XYL-0S-9EN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qS5-mr-yci" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,6 +189,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DWw-hy-o1m"/>
+        <segue reference="g8R-aQ-skb"/>
     </inferredMetricsTieBreakers>
 </document>

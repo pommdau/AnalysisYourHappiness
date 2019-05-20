@@ -12,5 +12,5 @@ import UserNotifications
 class HappinessItem: NSObject, Codable {
     var name   = "item name"
     var rating:Float = 3.0
-    var price  = 0      // かかる費用
+    var price  = 1      // かかる費用
 }

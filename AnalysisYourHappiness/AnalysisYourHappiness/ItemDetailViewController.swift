@@ -20,7 +20,7 @@ class ItemDetailViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!      // item名の入力欄
     @IBOutlet weak var ratingLabel  : UILabel!
     @IBOutlet weak var ratingSlider : UISlider!
-    @IBOutlet weak var costTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: HappinessItem?
@@ -34,7 +34,7 @@ class ItemDetailViewController: UITableViewController {
             doneBarButton.isEnabled = true
             ratingSlider.value      = itemToEdit.rating
             self.sliderValueChanged(self)
-            costTextField.text      = String(itemToEdit.price)
+            priceTextField.text      = String(itemToEdit.price)
         }
     }
 
@@ -49,19 +49,15 @@ class ItemDetailViewController: UITableViewController {
     // MARK:- Actions
     @IBAction func done(_ sender: Any) {
         if let itemToEdit = itemToEdit {
-//            itemToEdit.text         = textField.text!
-//            itemToEdit.shouldRemind = shouldRemindSwitch.isOn
-//            itemToEdit.dueDate      = dueDate
-//            itemToEdit.scheduleNotification()
+            itemToEdit.name = nameTextField.text!
+            itemToEdit.rating = ratingSlider.value
+            itemToEdit.price = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
             let item          = HappinessItem()
-//            item.text         = textField.text!
-//            item.checked      = false
-//            item.shouldRemind = shouldRemindSwitch.isOn
-//            item.dueDate      = dueDate
-//            item.scheduleNotification()
-            
+            item.name = nameTextField.text!
+            item.rating = ratingSlider.value
+            item.price = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -73,6 +69,7 @@ class ItemDetailViewController: UITableViewController {
     @IBAction func sliderValueChanged(_ sender: Any) {
         var rating = ratingSlider.value
         rating = floor(rating * 10.0) / 10.0    // 0.1単位とする
+        ratingSlider.value = rating
         ratingLabel.text = "幸せ度：\(rating)"
     }
 }

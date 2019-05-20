@@ -96,10 +96,16 @@ class HappinessListViewController: UITableViewController, UINavigationController
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: HappinessItem) {
+        happinessList.happinessItems[0].append(item)
+        happinessList.arrangeHappinessItems()
+        tableView.reloadData()
+        
         navigationController?.popViewController(animated:true)
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: HappinessItem) {
+        happinessList.arrangeHappinessItems()
+        tableView.reloadData()
         navigationController?.popViewController(animated:true)
     }
 }
