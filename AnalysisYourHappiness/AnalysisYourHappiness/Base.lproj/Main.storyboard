@@ -34,6 +34,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="s8W-8y-CtW" kind="show" identifier="EditItem" trigger="accessoryAction" id="yuy-ua-OS9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,7 +47,7 @@
                     <navigationItem key="navigationItem" title="Happiness Item" id="abA-0L-qyT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lzp-iw-fzT">
                             <connections>
-                                <segue destination="s8W-8y-CtW" kind="show" id="DWw-hy-o1m"/>
+                                <segue destination="s8W-8y-CtW" kind="show" identifier="AddItem" id="DWw-hy-o1m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -185,4 +188,7 @@
             <point key="canvasLocation" x="-652" y="154"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DWw-hy-o1m"/>
+    </inferredMetricsTieBreakers>
 </document>

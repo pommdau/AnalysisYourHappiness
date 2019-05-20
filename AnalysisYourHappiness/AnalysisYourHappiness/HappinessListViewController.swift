@@ -8,8 +8,7 @@
 
 import UIKit
 
-class HappinessListViewController: UITableViewController, UINavigationControllerDelegate {
-    
+class HappinessListViewController: UITableViewController, UINavigationControllerDelegate, ItemDetailViewControllerDelegate {
     var happinessList = HappinessList()
 
     override func viewDidLoad() {
@@ -76,5 +75,31 @@ class HappinessListViewController: UITableViewController, UINavigationController
         label.text = "[\(item.rating)] \(item.name)"
     }
     
-
+    // MARK:- Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let controller = segue.destination as! ItemDetailViewController
+            controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let controller = segue.destination as! ItemDetailViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = happinessList.happinessItems[indexPath.section][indexPath.row]
+            }
+        }
+    }
+    
+    // MARK:- ItemDetailViewController Delegates
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
+        navigationController?.popViewController(animated:true)
+    }
+    
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: HappinessItem) {
+        navigationController?.popViewController(animated:true)
+    }
+    
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: HappinessItem) {
+        navigationController?.popViewController(animated:true)
+    }
 }

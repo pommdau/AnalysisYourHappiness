@@ -19,7 +19,6 @@ class HappinessList: NSObject {
     var happinessItems = [[HappinessItem]]()
     
     override init () {
-        
         let happinessItem_01 = HappinessItem()
         happinessItem_01.rating = 4.5
         let happinessItem_02 = HappinessItem()
