@@ -69,6 +69,15 @@ class HappinessListViewController: UITableViewController, UINavigationController
         }
     }
     
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        
+        happinessList.happinessItems[indexPath.section].remove(at: indexPath.row)
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
     func configureText(for cell: UITableViewCell, with item: HappinessItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         //    label.text = item.text
