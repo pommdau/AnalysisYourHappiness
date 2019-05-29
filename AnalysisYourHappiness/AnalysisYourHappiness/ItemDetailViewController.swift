@@ -33,10 +33,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         if let itemToEdit = itemToEdit {    // 編集モードの場合
             title = "項目の編集"
             nameTextField.text      = itemToEdit.name
-            isNameTextFieldEmpty  = false
-            isPriceTextFieldEmpty = false
+            isNameTextFieldEmpty    = false
+            isPriceTextFieldEmpty   = false
             doneBarButton.isEnabled = true
-            ratingSlider.value      = itemToEdit.rating
+            ratingSlider.value      = Float(itemToEdit.rating)
             self.sliderValueChanged(self)
             priceTextField.text     = String(itemToEdit.price)
         } else {
@@ -54,13 +54,13 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done(_ sender: Any) {
         if let itemToEdit = itemToEdit {
             itemToEdit.name = nameTextField.text!
-            itemToEdit.rating = ratingSlider.value
+            itemToEdit.rating = Double(ratingSlider.value)
             itemToEdit.price = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
             let item          = HappinessItem()
             item.name = nameTextField.text!
-            item.rating = ratingSlider.value
+            item.rating = Double(ratingSlider.value)
             item.price = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
