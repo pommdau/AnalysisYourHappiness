@@ -48,20 +48,7 @@ class HappinessListViewController: UITableViewController, UINavigationController
     // セクションタイトルを返す
     override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return happinessList.sectionTitles[section]
-        case 1:
-            return happinessList.sectionTitles[section]
-        case 2:
-            return happinessList.sectionTitles[section]
-        case 3:
-            return happinessList.sectionTitles[section]
-        case 4:
-            return happinessList.sectionTitles[section]
-        default:
-            return "(Section Error)"
-        }
+        return happinessList.sectionTitles[section]
     }
     
     override func tableView(_ tableView: UITableView,
@@ -76,7 +63,7 @@ class HappinessListViewController: UITableViewController, UINavigationController
     func configureText(for cell: UITableViewCell, with item: HappinessItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         //    label.text = item.text
-        label.text = "[\(item.rating)] \(item.name)"
+        label.text = "[\(item.costPerformance) \(item.rating)] \(item.name) \(item.price)円 "
     }
     
     // MARK:- Navigation

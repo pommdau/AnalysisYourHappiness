@@ -28,8 +28,8 @@ class HappinessList: NSObject {
         // TODO: firstTimeで入れるようにする＋UserDefaultsに保存する
         if sortType == nil {
 //            sortType = sortTypeEnum.costPerformanceDescening
-            //            sortType = sortTypeEnum.ratingDescending
-            sortType = sortTypeEnum.priceDescending
+            sortType = sortTypeEnum.ratingDescending
+//            sortType = sortTypeEnum.priceDescending
         }
         
         let happinessItem_01 = HappinessItem()

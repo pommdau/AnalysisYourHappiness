@@ -53,15 +53,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     // MARK:- Actions
     @IBAction func done(_ sender: Any) {
         if let itemToEdit = itemToEdit {
-            itemToEdit.name = nameTextField.text!
+            itemToEdit.name   = nameTextField.text!
             itemToEdit.rating = Double(ratingSlider.value)
-            itemToEdit.price = Int(priceTextField.text!)!
+            itemToEdit.price  = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
-            let item          = HappinessItem()
-            item.name = nameTextField.text!
+            let item = HappinessItem()
+            item.name   = nameTextField.text!
             item.rating = Double(ratingSlider.value)
-            item.price = Int(priceTextField.text!)!
+            item.price  = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -74,7 +74,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         var rating = ratingSlider.value
         rating = floor(rating * 10.0) / 10.0    // 0.1単位とする
         ratingSlider.value = rating
-        ratingLabel.text = "\(rating)"
+        ratingLabel.text   = "\(rating)"
     }
     
     // MARK:- Text Field Delegates
