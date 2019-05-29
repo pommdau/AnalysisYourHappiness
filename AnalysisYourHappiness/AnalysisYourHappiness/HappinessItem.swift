@@ -10,7 +10,14 @@ import Foundation
 import UserNotifications
 
 class HappinessItem: NSObject, Codable {
-    var name   = "item name"
-    var rating:Float = 3.0
-    var price  = 1      // かかる費用
+    var name   = "(item name)"
+    var rating = 3.0
+    var time   = 3.0  // 幸せ持続時間（hour）
+    var price  = 1 // かかる費用(yen)
+    var costPerformance: Double {   // コスパ = レーティング * 持続時間 / 費用
+        get {
+            let fixedRating = rating * 1000     // レートの補正
+            return fixedRating * time / Double(price)
+        }
+    }
 }

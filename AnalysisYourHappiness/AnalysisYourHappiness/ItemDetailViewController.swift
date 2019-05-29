@@ -33,10 +33,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         if let itemToEdit = itemToEdit {    // 編集モードの場合
             title = "項目の編集"
             nameTextField.text      = itemToEdit.name
-            isNameTextFieldEmpty  = false
-            isPriceTextFieldEmpty = false
+            isNameTextFieldEmpty    = false
+            isPriceTextFieldEmpty   = false
             doneBarButton.isEnabled = true
-            ratingSlider.value      = itemToEdit.rating
+            ratingSlider.value      = Float(itemToEdit.rating)
             self.sliderValueChanged(self)
             priceTextField.text     = String(itemToEdit.price)
         } else {
@@ -53,15 +53,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     // MARK:- Actions
     @IBAction func done(_ sender: Any) {
         if let itemToEdit = itemToEdit {
-            itemToEdit.name = nameTextField.text!
-            itemToEdit.rating = ratingSlider.value
-            itemToEdit.price = Int(priceTextField.text!)!
+            itemToEdit.name   = nameTextField.text!
+            itemToEdit.rating = Double(ratingSlider.value)
+            itemToEdit.price  = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
-            let item          = HappinessItem()
-            item.name = nameTextField.text!
-            item.rating = ratingSlider.value
-            item.price = Int(priceTextField.text!)!
+            let item = HappinessItem()
+            item.name   = nameTextField.text!
+            item.rating = Double(ratingSlider.value)
+            item.price  = Int(priceTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -74,7 +74,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         var rating = ratingSlider.value
         rating = floor(rating * 10.0) / 10.0    // 0.1単位とする
         ratingSlider.value = rating
-        ratingLabel.text = "\(rating)"
+        ratingLabel.text   = "\(rating)"
     }
     
     // MARK:- Text Field Delegates
