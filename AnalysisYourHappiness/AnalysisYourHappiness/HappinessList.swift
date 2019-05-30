@@ -14,7 +14,7 @@ enum sortTypeEnum:Int {
     case priceAscending
 }
 
-class HappinessList: NSObject {
+class HappinessList {
     
     var sortType              :sortTypeEnum!      // セクションの分類方法
     var numberOfSections      :Int!
@@ -22,55 +22,81 @@ class HappinessList: NSObject {
     var sectionTitles         :[String]!
     var happinessItems = [[HappinessItem]]()    // 項目の2次元配列（Section別）
     
-    override init () {
-        super.init()
+    init() {
+        // ソートの種類を読み込む
+        sortType = sortTypeEnum(rawValue: UserDefaults.standard.integer(forKey: "SortType"))    // UserDefaults初回起動なら0が帰ってくるはず
+        loadHappinessItems()
         registerDefaults()
+        handleFirstTime()
         
         let mes = documentsDirectory()
         print(mes)
         
-        sortType = sortTypeEnum(rawValue: UserDefaults.standard.integer(forKey: "SortType"))    // UserDefaults初回起動なら0が帰ってくるはず
+        arrangeHappinessItems()
+        saveHappinessItems()
+    }
+    
+    // 初回起動時の設定
+    func handleFirstTime() {
+        let userDefaults = UserDefaults.standard
+        let firstTime = userDefaults.bool(forKey: "FirstTime")
         
+        if !firstTime {
+            userDefaults.set(true, forKey: "FirstTime") // debug
+            return  // 初回起動でなければ何もしない
+        }
+        
+        // テストデータの登録
         let happinessItem_01 = HappinessItem()
-        happinessItem_01.name   = "新型macOS製品を購入"
-        happinessItem_01.rating = 3.5
-        happinessItem_01.time   = 24 * 3
-        happinessItem_01.price  = 100000
+        happinessItem_01.name   = "新型のMacBookを購入"
+        happinessItem_01.rating = 4.5
+        happinessItem_01.time   = 12 * 7
+        happinessItem_01.price  = 200000
         happinessItems.append([happinessItem_01])
         
         let happinessItem_02 = HappinessItem()
-        happinessItem_02.name   = "子供の運動会に出る"
-        happinessItem_02.rating = 5.0
-        happinessItem_02.time   = 6
+        happinessItem_02.name   = "子供の運動会を見に行く"
+        happinessItem_02.rating = 2.5
+        happinessItem_02.time   = 8
         happinessItem_02.price  = 0
         happinessItems.append([happinessItem_02])
         
         let happinessItem_03 = HappinessItem()
         happinessItem_03.name   = "読書をする"
-        happinessItem_03.rating = 1.5
+        happinessItem_03.rating = 1.8
         happinessItem_03.time   = 2
         happinessItem_03.price  = 1000
         happinessItems.append([happinessItem_03])
         
         let happinessItem_04 = HappinessItem()
-        happinessItem_04.name   = "旅行に行く"
+        happinessItem_04.name   = "日帰り旅行に行く"
         happinessItem_04.rating = 0.8
         happinessItem_04.time   = 12
-        happinessItem_04.price  = 10000
+        happinessItem_04.price  = 12000
         happinessItems.append([happinessItem_04])
         
         let happinessItem_05 = HappinessItem()
-        happinessItem_05.name   = "映画を見に行く"
-        happinessItem_05.rating = 2.9
-        happinessItem_05.time   = 3
+        happinessItem_05.name   = "猫カフェへ行く"
+        happinessItem_05.rating = 3.5
+        happinessItem_05.time   = 2
         happinessItem_05.price  = 3000
         happinessItems.append([happinessItem_05])
         
+        let happinessItem_06 = HappinessItem()
+        happinessItem_06.name   = "外食をする"
+        happinessItem_06.rating = 0.1
+        happinessItem_06.time   = 1
+        happinessItem_06.price  = 750
+        happinessItems.append([happinessItem_06])
+        
         arrangeHappinessItems()
+        
+        userDefaults.set(false, forKey: "FirstTime")
+        userDefaults.synchronize()
+        
     }
     
     // MARK:- HappinessItemMethod
-    
     // アイテムを指定されたソートに応じて並び替える
     func arrangeHappinessItems() {
         
@@ -209,6 +235,32 @@ class HappinessList: NSObject {
         return documentsDirectory().appendingPathComponent("AnalysisYourHappiness.plist")
     }
     
+    func saveHappinessItems() {
+        let encoder = PropertyListEncoder()
+        do {
+            // You encode lists instead of "items
+            let data = try encoder.encode(happinessItems)
+            try data.write(to: dataFilePath(),
+                           options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding list array: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadHappinessItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                happinessItems = try decoder.decode([[HappinessItem]].self, from: data)
+                arrangeHappinessItems()
+            } catch {
+                print("Error decoding list array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK:- UserDefaults Methods
     // ソートの種類を記録する
     func saveSortType() {
         UserDefaults.standard.set(sortType.rawValue, forKey: "SortType")
@@ -220,4 +272,5 @@ class HappinessList: NSObject {
         UserDefaults.standard.register(defaults: dictionary)  // register:設定されていない場合に値を登録する。　set:上書き登録
     }
     
+
 }
