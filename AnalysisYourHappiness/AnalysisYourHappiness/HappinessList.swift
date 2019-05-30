@@ -11,15 +11,15 @@ import UIKit
 enum sortTypeEnum:Int {
     case costPerformanceDescening
     case ratingDescending
-    case priceDescending
+    case priceAscending
 }
 
 class HappinessList: NSObject {
     
-    var sortType:sortTypeEnum!      // セクションの分類方法
-    var numberOfSections:Int!       // TODO: computedPropertyにしてもいいかも
-    var numberOfRowsInSection:[Int]!
-    var sectionTitles:[String]!
+    var sortType              :sortTypeEnum!      // セクションの分類方法
+    var numberOfSections      :Int!
+    var numberOfRowsInSection :[Int]!
+    var sectionTitles         :[String]!
     var happinessItems = [[HappinessItem]]()    // 項目の2次元配列（Section別）
     
     override init () {
@@ -148,7 +148,7 @@ class HappinessList: NSObject {
                 numberOfRowsInSection[0] += 1
             }
             
-        case sortTypeEnum.priceDescending:
+        case sortTypeEnum.priceAscending:
             happinessItemsTmp.sort(by: { item1, item2 in
                 item1.price < item2.price // レーティングを降順でソートする
             })
