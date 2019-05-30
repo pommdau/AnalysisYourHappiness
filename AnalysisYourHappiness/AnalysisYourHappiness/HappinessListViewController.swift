@@ -13,7 +13,7 @@ class HappinessListViewController: UITableViewController,
     ItemDetailViewControllerDelegate,
     ConditionsDetailViewControllerDelegate {
     
-    var happinessList = HappinessList()
+    var happinessList: HappinessList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,5 +120,25 @@ class HappinessListViewController: UITableViewController,
         happinessList.arrangeHappinessItems()
         tableView.reloadData()
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK:- Actions
+    // TODO:delete （デバッグ用）サンプルを追加する
+    @IBAction func addSample(_ sender: Any) {
+        
+        // すでに5以上あれば無効とする
+        var happinessItemsTmp = [HappinessItem]()
+        for happinessItemsInSection in happinessList.happinessItems {
+            for happinessItem in happinessItemsInSection {
+                happinessItemsTmp.append(happinessItem)
+            }
+        }
+        if (happinessItemsTmp.count >= 5) {
+            return
+        }
+        
+        UserDefaults.standard.set(true, forKey: "FirstTime")
+        happinessList.handleFirstTime()
+        tableView.reloadData()
     }
 }

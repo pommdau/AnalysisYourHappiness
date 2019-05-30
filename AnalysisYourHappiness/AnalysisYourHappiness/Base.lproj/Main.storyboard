@@ -57,11 +57,18 @@
                                 <segue destination="bb5-FR-Hyn" kind="show" identifier="EditConditions" id="pmF-ej-egd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lzp-iw-fzT">
-                            <connections>
-                                <segue destination="s8W-8y-CtW" kind="show" identifier="AddItem" id="DWw-hy-o1m"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Lzp-iw-fzT">
+                                <connections>
+                                    <segue destination="s8W-8y-CtW" kind="show" identifier="AddItem" id="DWw-hy-o1m"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="[Debug]" id="42D-KB-thr">
+                                <connections>
+                                    <action selector="addSample:" destination="S5t-1g-MNE" id="hDq-Ev-pks"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJa-uI-bbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -282,7 +289,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="継続時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzD-gf-mIP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="継続期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzD-gf-mIP">
                                                     <rect key="frame" x="16" y="11.5" width="70" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
