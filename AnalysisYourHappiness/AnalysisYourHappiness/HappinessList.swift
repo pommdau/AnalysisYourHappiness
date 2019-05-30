@@ -43,7 +43,7 @@ class HappinessList: NSObject {
         happinessItem_02.name   = "子供の運動会に出る"
         happinessItem_02.rating = 5.0
         happinessItem_02.time   = 6
-        happinessItem_02.price  = 1
+        happinessItem_02.price  = 0
         happinessItems.append([happinessItem_02])
         
         let happinessItem_03 = HappinessItem()
@@ -163,7 +163,7 @@ class HappinessList: NSObject {
             sectionTitles.append("6000円以上")
             sectionTitles.append("3000円以上")
             sectionTitles.append("1000円以上")
-            sectionTitles.append("無料（1円）")
+            sectionTitles.append("無料のもの")
             
             // 配列の初期化
             happinessItems.removeAll()

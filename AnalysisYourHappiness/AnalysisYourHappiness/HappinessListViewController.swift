@@ -68,7 +68,7 @@ class HappinessListViewController: UITableViewController,
         let titleLabel     = cell.viewWithTag(1000) as! UILabel
         let subTitleLabel  = cell.viewWithTag(1001) as! UILabel
         titleLabel.text    = "\(item.name)"
-        subTitleLabel.text = "【レート】\(item.rating)【費用】\(item.price)円【持続時間】\(item.time)時間"
+        subTitleLabel.text = "【レート】\(item.rating)【費用】\(item.price)円"
     }
     
     // MARK:- Navigation
