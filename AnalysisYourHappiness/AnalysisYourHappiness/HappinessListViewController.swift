@@ -35,8 +35,8 @@ class HappinessListViewController: UITableViewController,
     }
     
     // セルの表示を行う
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
-        UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HappinessItem", for: indexPath)
             let item = happinessList.happinessItems[indexPath.section][indexPath.row]
             
@@ -65,9 +65,10 @@ class HappinessListViewController: UITableViewController,
     }
     
     func configureText(for cell: UITableViewCell, with item: HappinessItem) {
-        let label = cell.viewWithTag(1000) as! UILabel
-        //    label.text = item.text
-        label.text = "[\(item.costPerformance) \(item.rating)] \(item.name) \(item.price)円 "
+        let titleLabel     = cell.viewWithTag(1000) as! UILabel
+        let subTitleLabel  = cell.viewWithTag(1001) as! UILabel
+        titleLabel.text    = "\(item.name)"
+        subTitleLabel.text = "【レート】\(item.rating)【費用】\(item.price)円【持続時間】\(item.time)時間"
     }
     
     // MARK:- Navigation
