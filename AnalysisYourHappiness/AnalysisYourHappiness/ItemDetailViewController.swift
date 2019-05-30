@@ -16,16 +16,15 @@ protocol ItemDetailViewControllerDelegate: class {
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var doneBarButton: UIBarButtonItem!  // 編集完了ボタン
-    @IBOutlet weak var nameTextField: UITextField!      // item名の入力欄
-    @IBOutlet weak var ratingLabel  : UILabel!
-    @IBOutlet weak var ratingSlider : UISlider!
+    @IBOutlet weak var doneBarButton : UIBarButtonItem!  // 編集完了ボタン
+    @IBOutlet weak var nameTextField : UITextField!      // item名の入力欄
+    @IBOutlet weak var ratingLabel   : UILabel!
+    @IBOutlet weak var ratingSlider  : UISlider!
     @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var timeTextField : UITextField!
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: HappinessItem?
-    var isNameTextFieldEmpty  = true
-    var isPriceTextFieldEmpty = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +32,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         if let itemToEdit = itemToEdit {    // 編集モードの場合
             title = "項目の編集"
             nameTextField.text      = itemToEdit.name
-            isNameTextFieldEmpty    = false
-            isPriceTextFieldEmpty   = false
             doneBarButton.isEnabled = true
             ratingSlider.value      = Float(itemToEdit.rating)
             self.sliderValueChanged(self)
-            priceTextField.text     = String(itemToEdit.price)
+            if (itemToEdit.price == 0) {
+                priceTextField.text = ""
+            } else {
+                priceTextField.text = String(itemToEdit.price)
+            }
+            timeTextField.text = String(itemToEdit.time)
         } else {
             title = "項目の追加"
         }
@@ -54,14 +56,20 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done(_ sender: Any) {
         if let itemToEdit = itemToEdit {
             itemToEdit.name   = nameTextField.text!
-            itemToEdit.rating = Double(ratingSlider.value)
-            itemToEdit.price  = Int(priceTextField.text!)!
+            itemToEdit.rating = Double(ratingLabel.text!)!  // UISliderからだと値がFloat->Doubleで値がずれるのでテキストから取得する
+            if let newPrice = Int(priceTextField.text!) {
+                itemToEdit.price  = newPrice
+            } else {
+                itemToEdit.price = 0
+            }
+            itemToEdit.time = Double(timeTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
             let item = HappinessItem()
             item.name   = nameTextField.text!
             item.rating = Double(ratingSlider.value)
             item.price  = Int(priceTextField.text!)!
+            item.time   = Double(timeTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -81,25 +89,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let oldText = textField.text!
+        let oldText     = textField.text!
         let stringRange = Range(range, in:oldText)!
-        let newText = oldText.replacingCharacters(in: stringRange,
-                                                  with: string)
-        if (textField === nameTextField) {
-            isNameTextFieldEmpty = newText.isEmpty
-        } else if (textField === priceTextField) {
-            isPriceTextFieldEmpty = newText.isEmpty
-        }
-        doneBarButton.isEnabled = !isNameTextFieldEmpty && !isPriceTextFieldEmpty
+        let newText     = oldText.replacingCharacters(in: stringRange,
+                                                      with: string)
+        doneBarButton.isEnabled = !newText.isEmpty
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        if (textField === nameTextField) {
-            isNameTextFieldEmpty = true
-        } else if (textField === priceTextField) {
-            isPriceTextFieldEmpty = true
-        }
         doneBarButton.isEnabled = false
         return true
     }

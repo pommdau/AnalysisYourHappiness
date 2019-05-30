@@ -11,15 +11,15 @@ import UIKit
 enum sortTypeEnum:Int {
     case costPerformanceDescening
     case ratingDescending
-    case priceDescending
+    case priceAscending
 }
 
 class HappinessList: NSObject {
     
-    var sortType:sortTypeEnum!      // セクションの分類方法
-    var numberOfSections:Int!       // TODO: computedPropertyにしてもいいかも
-    var numberOfRowsInSection:[Int]!
-    var sectionTitles:[String]!
+    var sortType              :sortTypeEnum!      // セクションの分類方法
+    var numberOfSections      :Int!
+    var numberOfRowsInSection :[Int]!
+    var sectionTitles         :[String]!
     var happinessItems = [[HappinessItem]]()    // 項目の2次元配列（Section別）
     
     override init () {
@@ -43,7 +43,7 @@ class HappinessList: NSObject {
         happinessItem_02.name   = "子供の運動会に出る"
         happinessItem_02.rating = 5.0
         happinessItem_02.time   = 6
-        happinessItem_02.price  = 1
+        happinessItem_02.price  = 0
         happinessItems.append([happinessItem_02])
         
         let happinessItem_03 = HappinessItem()
@@ -97,7 +97,7 @@ class HappinessList: NSObject {
             sectionTitles.append("レーティング 3.0以上")
             sectionTitles.append("レーティング 2.0以上")
             sectionTitles.append("レーティング 1.0以上")
-            sectionTitles.append("レーティング 0.0以上")
+            sectionTitles.append("レーティング 1.0未満")
             
             // 配列の初期化
             happinessItems.removeAll()
@@ -148,47 +148,50 @@ class HappinessList: NSObject {
                 numberOfRowsInSection[0] += 1
             }
             
-        case sortTypeEnum.priceDescending:
+        case sortTypeEnum.priceAscending:
             happinessItemsTmp.sort(by: { item1, item2 in
-                item1.price > item2.price // レーティングを降順でソートする
+                item1.price < item2.price // レーティングを降順でソートする
             })
             
-            numberOfSections = 5    // 1万円以上 / 6000円以上 / 3000円以上 / 1000円以上 / 無料（1円）
+            numberOfSections = 6    // 1万円以上 / 6000円以上 / 3000円以上 / 1000円以上 / 1000円未満 / 無料
             numberOfRowsInSection = [Int](repeating: 0, count: numberOfSections)
             sectionTitles = [String](repeating: "(dummy title)", count: 1)
             
             // セクションタイトルを決め打ちで決める
             sectionTitles.removeAll()
-            sectionTitles.append("10000円以上")
-            sectionTitles.append("6000円以上")
-            sectionTitles.append("3000円以上")
+            sectionTitles.append("無料")
+            sectionTitles.append("1000円未満")
             sectionTitles.append("1000円以上")
-            sectionTitles.append("無料（1円）")
+            sectionTitles.append("3000円以上")
+            sectionTitles.append("6000円以上")
+            sectionTitles.append("10000円以上")
             
             // 配列の初期化
             happinessItems.removeAll()
             for _ in 0 ..< numberOfSections {
                 happinessItems.append([HappinessItem]())
             }
-            
-            // 要素の格納とrow数のカウント
+        
             for happinessItem in happinessItemsTmp {
                 let price = happinessItem.price
-                if (price >= 10000) {
+                if (price < 1) {
                     happinessItems[0].append(happinessItem)
                     numberOfRowsInSection[0] += 1
-                } else if (price >= 6000) {
+                } else if (price < 1000) {
                     happinessItems[1].append(happinessItem)
                     numberOfRowsInSection[1] += 1
-                } else if (price >= 3000) {
+                } else if (price < 3000) {
                     happinessItems[2].append(happinessItem)
                     numberOfRowsInSection[2] += 1
-                } else if (price >= 1000) {
+                } else if (price < 6000) {
                     happinessItems[3].append(happinessItem)
                     numberOfRowsInSection[3] += 1
-                } else if (price >= 1) {
+                } else if (price < 10000) {
                     happinessItems[4].append(happinessItem)
                     numberOfRowsInSection[4] += 1
+                } else {
+                    happinessItems[5].append(happinessItem)
+                    numberOfRowsInSection[5] += 1
                 }
             }
         }
