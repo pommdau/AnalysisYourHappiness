@@ -24,13 +24,12 @@ class HappinessList: NSObject {
     
     override init () {
         super.init()
+        registerDefaults()
         
-        // TODO: firstTimeで入れるようにする＋UserDefaultsに保存する
-        if sortType == nil {
-//            sortType = sortTypeEnum.costPerformanceDescening
-            sortType = sortTypeEnum.ratingDescending
-//            sortType = sortTypeEnum.priceDescending
-        }
+        let mes = documentsDirectory()
+        print(mes)
+        
+        sortType = sortTypeEnum(rawValue: UserDefaults.standard.integer(forKey: "SortType"))    // UserDefaults初回起動なら0が帰ってくるはず
         
         let happinessItem_01 = HappinessItem()
         happinessItem_01.name   = "新型macOS製品を購入"
@@ -74,6 +73,8 @@ class HappinessList: NSObject {
     
     // アイテムを指定されたソートに応じて並び替える
     func arrangeHappinessItems() {
+        
+        saveSortType()
         
         // ソートのために２次元配列を1次配列に変換
         var happinessItemsTmp = [HappinessItem]()
@@ -197,14 +198,26 @@ class HappinessList: NSObject {
         }
     }
     
-    // TODO:フィルタリングをかける
-    func filterWithPrice(lowestPrice: Int = 1, highestPrice: Int = 9999999) {
-        // フィルタリングのために２次元配列を1次配列に変換
-        //        var happinessItemsTmp = [HappinessItem]()
-        //        for happinessItemsInSection in happinessItems {
-        //            for happinessItem in happinessItemsInSection {
-        //                happinessItemsTmp.append(happinessItem)
-        //            }
-        //        }
+    // MARK:- Data Saving
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory,
+                                             in: .userDomainMask)
+        return paths[0]
     }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("AnalysisYourHappiness.plist")
+    }
+    
+    // ソートの種類を記録する
+    func saveSortType() {
+        UserDefaults.standard.set(sortType.rawValue, forKey: "SortType")
+    }
+    
+    // Userdefaultsへデフォルト値を設定する
+    func registerDefaults() {
+        let dictionary = ["SortType": sortTypeEnum.costPerformanceDescening.rawValue, "FirstTime": true] as [String : Any]  // 異なる型を登録する場合はキャストが必要
+        UserDefaults.standard.register(defaults: dictionary)  // register:設定されていない場合に値を登録する。　set:上書き登録
+    }
+    
 }
