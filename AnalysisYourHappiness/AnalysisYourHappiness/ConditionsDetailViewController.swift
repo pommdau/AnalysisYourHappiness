@@ -2,7 +2,6 @@ import UIKit
 
 protocol ConditionsDetailViewControllerDelegate: class {
     func conditionsDetailViewControllerDidCancel(_ controller: ConditionsDetailViewController)
-    func conditionsDetailViewController(_ controller: ConditionsDetailViewController, didFinishAdding sortType: sortTypeEnum)
     func conditionsDetailViewController(_ controller: ConditionsDetailViewController, didFinishEditing sortType: sortTypeEnum)
 }
 
@@ -11,15 +10,15 @@ class ConditionsDetailViewController: UITableViewController, UITextFieldDelegate
     var lastCheckmarkedIndexPath: IndexPath!
     var selectedSortType: sortTypeEnum!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        // TODO: 条件分岐をすること
-        // 指定されているセルにチェックマークをつける
-        lastCheckmarkedIndexPath = IndexPath(row: sortTypeEnum.priceDescending.rawValue, section: 0)
+        // 現在の並び替えにチェックマークをつける（viewDidLoadではうまく行かなかった。描画のタイミングだろうか。）
+        lastCheckmarkedIndexPath = IndexPath(row: selectedSortType.rawValue, section: 0)
         if let cell = tableView.cellForRow(at: lastCheckmarkedIndexPath) {
             cell.accessoryType = .checkmark
         }
+        tableView.reloadData()
     }
     
     // MARK:- Actions
@@ -28,7 +27,7 @@ class ConditionsDetailViewController: UITableViewController, UITextFieldDelegate
     }
     
     @IBAction func done() {
-        delegate?.conditionsDetailViewController(self, didFinishAdding: selectedSortType)
+        delegate?.conditionsDetailViewController(self, didFinishEditing: selectedSortType)
     }
     
     // MARK:- Table View Delegates
@@ -39,7 +38,8 @@ class ConditionsDetailViewController: UITableViewController, UITextFieldDelegate
             if let checkmarkedCell = tableView.cellForRow(at: lastCheckmarkedIndexPath) {
                 checkmarkedCell.accessoryType = .none
             }
-            cell.accessoryType = .checkmark
+            cell.accessoryType       = .checkmark
+            selectedSortType         = sortTypeEnum(rawValue: indexPath.row)
             lastCheckmarkedIndexPath = indexPath
         }
         tableView.deselectRow(at: indexPath, animated: true)

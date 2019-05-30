@@ -134,8 +134,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="並び替えを選択" id="Vxz-tQ-qNF">
-                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="R2Z-kt-so4"/>
-                        <barButtonItem key="rightBarButtonItem" title="完了" id="RL8-k8-tFt"/>
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="R2Z-kt-so4">
+                            <connections>
+                                <action selector="cancel" destination="bb5-FR-Hyn" id="fDJ-NE-s4k"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完了" id="RL8-k8-tFt">
+                            <connections>
+                                <action selector="done" destination="bb5-FR-Hyn" id="XpZ-ky-9Xg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1D-NP-Mut" userLabel="First Responder" sceneMemberID="firstResponder"/>

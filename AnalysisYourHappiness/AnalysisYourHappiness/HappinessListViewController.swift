@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HappinessListViewController: UITableViewController, UINavigationControllerDelegate, ItemDetailViewControllerDelegate {
+class HappinessListViewController: UITableViewController,
+    UINavigationControllerDelegate,
+    ItemDetailViewControllerDelegate,
+    ConditionsDetailViewControllerDelegate {
+    
     var happinessList = HappinessList()
 
     override func viewDidLoad() {
@@ -78,6 +82,10 @@ class HappinessListViewController: UITableViewController, UINavigationController
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 controller.itemToEdit = happinessList.happinessItems[indexPath.section][indexPath.row]
             }
+        } else if segue.identifier == "EditConditions" {
+            let controller = segue.destination as! ConditionsDetailViewController
+            controller.delegate = self
+            controller.selectedSortType = happinessList.sortType
         }
     }
     
@@ -98,5 +106,17 @@ class HappinessListViewController: UITableViewController, UINavigationController
         happinessList.arrangeHappinessItems()
         tableView.reloadData()
         navigationController?.popViewController(animated:true)
+    }
+    
+    // MARK:- ConditionsDetailViewControllerDelegate
+    func conditionsDetailViewControllerDidCancel(_ controller: ConditionsDetailViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func conditionsDetailViewController(_ controller: ConditionsDetailViewController, didFinishEditing sortType: sortTypeEnum) {
+        happinessList.sortType = sortType
+        happinessList.arrangeHappinessItems()
+        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
     }
 }
