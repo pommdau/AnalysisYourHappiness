@@ -159,7 +159,7 @@ class HappinessList: NSObject {
             
             // セクションタイトルを決め打ちで決める
             sectionTitles.removeAll()
-            sectionTitles.append("無料のもの")
+            sectionTitles.append("無料")
             sectionTitles.append("1000円未満")
             sectionTitles.append("1000円以上")
             sectionTitles.append("3000円以上")

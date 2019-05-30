@@ -60,6 +60,7 @@ class HappinessListViewController: UITableViewController,
                             forRowAt indexPath: IndexPath) {
         
         happinessList.happinessItems[indexPath.section].remove(at: indexPath.row)
+        happinessList.arrangeHappinessItems()   // 削除した後はRowとSectionの数が変わっているので再計算が必要
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
