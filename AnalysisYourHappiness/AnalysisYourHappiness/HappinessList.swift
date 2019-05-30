@@ -28,12 +28,6 @@ class HappinessList {
         loadHappinessItems()
         registerDefaults()
         handleFirstTime()
-        
-        let mes = documentsDirectory()
-        print(mes)
-        
-        arrangeHappinessItems()
-        saveHappinessItems()
     }
     
     // 初回起動時の設定
@@ -42,7 +36,7 @@ class HappinessList {
         let firstTime = userDefaults.bool(forKey: "FirstTime")
         
         if !firstTime {
-            userDefaults.set(true, forKey: "FirstTime") // debug
+//            userDefaults.set(true, forKey: "FirstTime") // Debug
             return  // 初回起動でなければ何もしない
         }
         
@@ -228,6 +222,7 @@ class HappinessList {
     func documentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory,
                                              in: .userDomainMask)
+        print(paths[0]) // debug
         return paths[0]
     }
     
@@ -253,17 +248,18 @@ class HappinessList {
             let decoder = PropertyListDecoder()
             do {
                 happinessItems = try decoder.decode([[HappinessItem]].self, from: data)
-                arrangeHappinessItems()
             } catch {
                 print("Error decoding list array: \(error.localizedDescription)")
             }
         }
+        arrangeHappinessItems() // データがない場合もRowの数の計算をするためにここで呼ぶ必要がある
     }
     
     // MARK:- UserDefaults Methods
     // ソートの種類を記録する
     func saveSortType() {
         UserDefaults.standard.set(sortType.rawValue, forKey: "SortType")
+        UserDefaults.standard.synchronize()
     }
     
     // Userdefaultsへデフォルト値を設定する

@@ -121,4 +121,24 @@ class HappinessListViewController: UITableViewController,
         tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK:- Actions
+    // TODO:delete （デバッグ用）サンプルを追加する
+    @IBAction func addSample(_ sender: Any) {
+        
+        // すでに5以上あれば無効とする
+        var happinessItemsTmp = [HappinessItem]()
+        for happinessItemsInSection in happinessList.happinessItems {
+            for happinessItem in happinessItemsInSection {
+                happinessItemsTmp.append(happinessItem)
+            }
+        }
+        if (happinessItemsTmp.count >= 5) {
+            return
+        }
+        
+        UserDefaults.standard.set(true, forKey: "FirstTime")
+        happinessList.handleFirstTime()
+        tableView.reloadData()
+    }
 }
