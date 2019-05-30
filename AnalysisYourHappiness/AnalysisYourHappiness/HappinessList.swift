@@ -9,8 +9,8 @@
 import UIKit
 
 enum sortTypeEnum:Int {
-    case ratingDescending
     case costPerformanceDescening
+    case ratingDescending
     case priceDescending
 }
 
