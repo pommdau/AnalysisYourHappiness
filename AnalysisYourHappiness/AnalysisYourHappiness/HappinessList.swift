@@ -94,6 +94,7 @@ class HappinessList {
     // アイテムを指定されたソートに応じて並び替える
     func arrangeHappinessItems() {
         
+        // ソート情報をUserDefaultsで記録する
         saveSortType()
         
         // ソートのために２次元配列を1次配列に変換

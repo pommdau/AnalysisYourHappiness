@@ -13,7 +13,7 @@ class HappinessListViewController: UITableViewController,
     ItemDetailViewControllerDelegate,
     ConditionsDetailViewControllerDelegate {
     
-    var happinessList = HappinessList()
+    var happinessList: HappinessList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
