@@ -15,6 +15,7 @@
 		2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */; };
 		2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */; };
 		2ABE8BBB22918E14004053E9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */; };
+		D0BE957D229F5A4800BBB0AC /* ConditionsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BE957C229F5A4800BBB0AC /* ConditionsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessItem.swift; sourceTree = "<group>"; };
 		2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessList.swift; sourceTree = "<group>"; };
 		2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		D0BE957C229F5A4800BBB0AC /* ConditionsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				2ABE8BA2228FD033004053E9 /* AppDelegate.swift */,
 				2ABE8BB4228FD25F004053E9 /* HappinessListViewController.swift */,
+				D0BE957C229F5A4800BBB0AC /* ConditionsDetailViewController.swift */,
 				2ABE8BBA22918E14004053E9 /* ItemDetailViewController.swift */,
 				2ABE8BB8228FE0F6004053E9 /* HappinessList.swift */,
 				2ABE8BB6228FD2D5004053E9 /* HappinessItem.swift */,
@@ -149,6 +152,7 @@
 				2ABE8BB9228FE0F6004053E9 /* HappinessList.swift in Sources */,
 				2ABE8BB7228FD2D5004053E9 /* HappinessItem.swift in Sources */,
 				2ABE8BA3228FD033004053E9 /* AppDelegate.swift in Sources */,
+				D0BE957D229F5A4800BBB0AC /* ConditionsDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +300,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AnalysisYourHappiness/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.AnalysisYourHappiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -313,14 +318,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AnalysisYourHappiness/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.ikeh1024.AnalysisYourHappiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
