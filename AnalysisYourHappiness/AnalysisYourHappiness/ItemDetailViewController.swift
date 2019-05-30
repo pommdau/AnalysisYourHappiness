@@ -21,7 +21,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var ratingLabel   : UILabel!
     @IBOutlet weak var ratingSlider  : UISlider!
     @IBOutlet weak var priceTextField: UITextField!
-//    @IBOutlet weak var timeTextField : UITextField!
+    @IBOutlet weak var timeTextField : UITextField!
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: HappinessItem?
@@ -40,6 +40,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             } else {
                 priceTextField.text = String(itemToEdit.price)
             }
+            timeTextField.text = String(itemToEdit.time)
         } else {
             title = "項目の追加"
         }
@@ -61,12 +62,14 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             } else {
                 itemToEdit.price = 0
             }
+            itemToEdit.time = Double(timeTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
         } else {
             let item = HappinessItem()
             item.name   = nameTextField.text!
             item.rating = Double(ratingSlider.value)
             item.price  = Int(priceTextField.text!)!
+            item.time   = Double(timeTextField.text!)!
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
@@ -86,10 +89,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let oldText = textField.text!
+        let oldText     = textField.text!
         let stringRange = Range(range, in:oldText)!
-        let newText = oldText.replacingCharacters(in: stringRange,
-                                                  with: string)
+        let newText     = oldText.replacingCharacters(in: stringRange,
+                                                      with: string)
         doneBarButton.isEnabled = !newText.isEmpty
         return true
     }

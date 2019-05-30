@@ -153,7 +153,7 @@ class HappinessList: NSObject {
                 item1.price > item2.price // レーティングを降順でソートする
             })
             
-            numberOfSections = 5    // 1万円以上 / 6000円以上 / 3000円以上 / 1000円以上 / 無料（1円）
+            numberOfSections = 6    // 1万円以上 / 6000円以上 / 3000円以上 / 1000円以上 / 1000円未満 / 無料
             numberOfRowsInSection = [Int](repeating: 0, count: numberOfSections)
             sectionTitles = [String](repeating: "(dummy title)", count: 1)
             
@@ -163,6 +163,7 @@ class HappinessList: NSObject {
             sectionTitles.append("6000円以上")
             sectionTitles.append("3000円以上")
             sectionTitles.append("1000円以上")
+            sectionTitles.append("1000円未満")
             sectionTitles.append("無料のもの")
             
             // 配列の初期化
@@ -186,9 +187,12 @@ class HappinessList: NSObject {
                 } else if (price >= 1000) {
                     happinessItems[3].append(happinessItem)
                     numberOfRowsInSection[3] += 1
-                } else if (price >= 1) {
+                } else if (price > 1) {
                     happinessItems[4].append(happinessItem)
                     numberOfRowsInSection[4] += 1
+                } else {
+                    happinessItems[5].append(happinessItem)
+                    numberOfRowsInSection[5] += 1
                 }
             }
         }
