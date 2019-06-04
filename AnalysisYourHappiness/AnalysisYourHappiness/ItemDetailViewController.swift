@@ -18,10 +18,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var doneBarButton : UIBarButtonItem!  // 編集完了ボタン
     @IBOutlet weak var nameTextField : UITextField!      // item名の入力欄
-    @IBOutlet weak var ratingLabel   : UILabel!
-    @IBOutlet weak var ratingSlider  : UISlider!
-    @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var timeTextField : UITextField!
+    @IBOutlet weak var ratingLabel   : UILabel!          // 幸せ度のラベル
+    @IBOutlet weak var ratingSlider  : UISlider!         // 幸せ度のスライダー
+    @IBOutlet weak var priceTextField: UITextField!      // かかる費用
+    @IBOutlet weak var timeTextField : UITextField!      // 幸せの継続期間
     
     weak var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: HappinessItem?
@@ -54,6 +54,21 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK:- Actions
     @IBAction func done(_ sender: Any) {
+        // 継続期間が0の場合はエラーを出す
+        if  ceil(Double(timeTextField.text!)!) <= 0 {
+            let alert = UIAlertController(title: "継続期間の入力エラー。",
+                                          message: "0よりも大きい数値を入力してください。",
+                                          preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK",
+                                         style: .default,
+                                         handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        
         if let itemToEdit = itemToEdit {
             itemToEdit.name   = nameTextField.text!
             itemToEdit.rating = Double(ratingLabel.text!)!  // UISliderからだと値がFloat->Doubleで値がずれるのでテキストから取得する
@@ -89,16 +104,23 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let oldText     = textField.text!
-        let stringRange = Range(range, in:oldText)!
-        let newText     = oldText.replacingCharacters(in: stringRange,
-                                                      with: string)
-        doneBarButton.isEnabled = !newText.isEmpty
+        // 継続期間のテキストに入力があった場合
+        if (textField === timeTextField) {
+            let oldText     = textField.text!
+            let stringRange = Range(range, in:oldText)!
+            let newText     = oldText.replacingCharacters(in: stringRange,
+                                                          with: string)
+            doneBarButton.isEnabled = !newText.isEmpty
+        }
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        doneBarButton.isEnabled = false
+        // 継続期間のテキストがクリアされた場合
+        if (textField === timeTextField) {
+            doneBarButton.isEnabled = false
+        }
+        
         return true
     }
 }
