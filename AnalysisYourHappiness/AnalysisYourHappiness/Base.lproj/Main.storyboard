@@ -180,14 +180,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="項目名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEq-Uf-q3z">
-                                                    <rect key="frame" x="16" y="11.5" width="52" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="項目名を入力" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
-                                                    <rect key="frame" x="76" y="11.5" width="185" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="項目名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
+                                                    <rect key="frame" x="16" y="11.5" width="288" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -197,11 +191,9 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="6u8-Tm-pMk"/>
-                                                <constraint firstItem="NEq-Uf-q3z" firstAttribute="leading" secondItem="ekI-48-JgD" secondAttribute="leadingMargin" id="FRh-GU-77k"/>
-                                                <constraint firstItem="NEq-Uf-q3z" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="X1c-Jr-k5w"/>
-                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="leading" secondItem="NEq-Uf-q3z" secondAttribute="trailing" constant="8" id="cvU-xp-cLi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kHe-WZ-Kjj" secondAttribute="trailing" constant="43" id="oFn-aT-dby"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="36k-8Y-FIT"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="leading" secondItem="ekI-48-JgD" secondAttribute="leadingMargin" id="3gb-HQ-e9z"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="trailing" secondItem="ekI-48-JgD" secondAttribute="trailingMargin" id="Rfz-cW-fpn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -263,7 +255,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="かかる費用" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="必要なお金の総額" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
                                                     <rect key="frame" x="59" y="11.5" width="202" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -303,11 +295,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="幸せが継続する時間" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AIk-Mr-JbW">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="幸せが継続する期間" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AIk-Mr-JbW">
                                                     <rect key="frame" x="94" y="11.5" width="167" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="s8W-8y-CtW" id="KuE-O1-D1N"/>
                                                     </connections>
