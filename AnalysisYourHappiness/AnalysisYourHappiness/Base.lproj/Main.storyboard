@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iDH-Po-9aH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iDH-Po-9aH">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -180,14 +180,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="項目名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEq-Uf-q3z">
-                                                    <rect key="frame" x="16" y="11.5" width="70" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="項目名を入力" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
-                                                    <rect key="frame" x="196" y="11.5" width="108" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="項目名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kHe-WZ-Kjj">
+                                                    <rect key="frame" x="16" y="11.5" width="288" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -197,10 +191,9 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NEq-Uf-q3z" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="Ayf-7d-5H7"/>
-                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="GUT-kx-v0s"/>
-                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="trailing" secondItem="ekI-48-JgD" secondAttribute="trailingMargin" id="J9b-P3-nU5"/>
-                                                <constraint firstItem="NEq-Uf-q3z" firstAttribute="leading" secondItem="ekI-48-JgD" secondAttribute="leadingMargin" id="h93-KO-Pa5"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="centerY" secondItem="ekI-48-JgD" secondAttribute="centerY" id="36k-8Y-FIT"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="leading" secondItem="ekI-48-JgD" secondAttribute="leadingMargin" id="3gb-HQ-e9z"/>
+                                                <constraint firstItem="kHe-WZ-Kjj" firstAttribute="trailing" secondItem="ekI-48-JgD" secondAttribute="trailingMargin" id="Rfz-cW-fpn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -250,20 +243,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="費用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlu-58-dp9">
-                                                    <rect key="frame" x="16" y="11.5" width="70" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="費用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlu-58-dp9">
+                                                    <rect key="frame" x="16" y="11.5" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-A0-ha7">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-A0-ha7">
                                                     <rect key="frame" x="269" y="11.5" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="かかる費用" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
-                                                    <rect key="frame" x="94" y="12" width="167" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="必要なお金の総額" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-gq-FXZ">
+                                                    <rect key="frame" x="59" y="11.5" width="202" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -273,12 +266,13 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="QoJ-A0-ha7" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="9Xt-y0-mUm"/>
-                                                <constraint firstItem="xlu-58-dp9" firstAttribute="leading" secondItem="CDB-Ob-jVd" secondAttribute="leadingMargin" id="HCi-Hn-5tm"/>
-                                                <constraint firstItem="Neq-gq-FXZ" firstAttribute="leading" secondItem="xlu-58-dp9" secondAttribute="trailing" constant="8" id="LDn-aG-qoB"/>
-                                                <constraint firstItem="Neq-gq-FXZ" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="UMd-a8-5pU"/>
-                                                <constraint firstItem="QoJ-A0-ha7" firstAttribute="trailing" secondItem="CDB-Ob-jVd" secondAttribute="trailingMargin" id="km6-l2-5bb"/>
-                                                <constraint firstItem="xlu-58-dp9" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="rc9-5J-7Ik"/>
+                                                <constraint firstItem="xlu-58-dp9" firstAttribute="leading" secondItem="CDB-Ob-jVd" secondAttribute="leadingMargin" id="Dj4-0s-NYM"/>
+                                                <constraint firstItem="Neq-gq-FXZ" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="KMf-4J-aSP"/>
+                                                <constraint firstItem="xlu-58-dp9" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="Q6g-p5-YHL"/>
+                                                <constraint firstItem="Neq-gq-FXZ" firstAttribute="leading" secondItem="xlu-58-dp9" secondAttribute="trailing" constant="8" id="U2h-w9-es7"/>
+                                                <constraint firstItem="QoJ-A0-ha7" firstAttribute="trailing" secondItem="CDB-Ob-jVd" secondAttribute="trailingMargin" id="ZPE-vx-dQA"/>
+                                                <constraint firstItem="QoJ-A0-ha7" firstAttribute="centerY" secondItem="CDB-Ob-jVd" secondAttribute="centerY" id="kBR-7t-gib"/>
+                                                <constraint firstItem="QoJ-A0-ha7" firstAttribute="leading" secondItem="Neq-gq-FXZ" secondAttribute="trailing" constant="8" id="uD0-DP-LOT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -301,22 +295,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="幸せが継続する時間" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AIk-Mr-JbW">
-                                                    <rect key="frame" x="94" y="12" width="167" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="幸せが継続する期間" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AIk-Mr-JbW">
+                                                    <rect key="frame" x="94" y="11.5" width="167" height="21"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="s8W-8y-CtW" id="KuE-O1-D1N"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AIk-Mr-JbW" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="0xU-9A-Vu8"/>
-                                                <constraint firstItem="UzD-gf-mIP" firstAttribute="leading" secondItem="6Zd-6V-Tcx" secondAttribute="leadingMargin" id="MxZ-tZ-hGH"/>
-                                                <constraint firstItem="UzD-gf-mIP" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="Ri9-qS-FZ3"/>
-                                                <constraint firstItem="s2D-12-ayc" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="n1q-Jh-tlO"/>
-                                                <constraint firstItem="s2D-12-ayc" firstAttribute="trailing" secondItem="6Zd-6V-Tcx" secondAttribute="trailingMargin" id="yLw-0L-Brk"/>
+                                                <constraint firstItem="s2D-12-ayc" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="770-DJ-AYr"/>
+                                                <constraint firstItem="AIk-Mr-JbW" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="7od-ZF-Bx0"/>
+                                                <constraint firstItem="s2D-12-ayc" firstAttribute="leading" secondItem="AIk-Mr-JbW" secondAttribute="trailing" constant="8" id="C89-xU-LW6"/>
+                                                <constraint firstItem="AIk-Mr-JbW" firstAttribute="leading" secondItem="UzD-gf-mIP" secondAttribute="trailing" constant="8" id="YCu-6D-Uum"/>
+                                                <constraint firstItem="UzD-gf-mIP" firstAttribute="leading" secondItem="6Zd-6V-Tcx" secondAttribute="leadingMargin" id="YMu-C0-UGD"/>
+                                                <constraint firstItem="UzD-gf-mIP" firstAttribute="centerY" secondItem="6Zd-6V-Tcx" secondAttribute="centerY" id="kuf-eJ-ZPK"/>
+                                                <constraint firstItem="s2D-12-ayc" firstAttribute="trailing" secondItem="6Zd-6V-Tcx" secondAttribute="trailingMargin" id="t4m-qb-74l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
